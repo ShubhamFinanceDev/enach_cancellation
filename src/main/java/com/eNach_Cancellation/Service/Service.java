@@ -5,5 +5,5 @@ import com.eNach_Cancellation.Model.SaveStatusRequest;
 
 public interface Service {
 
-    CommonResponse statusRequest(SaveStatusRequest statusRequest) throws Exception;
+    String statusRequest(SaveStatusRequest statusRequest) throws Exception;
 }

@@ -35,12 +35,11 @@ public class ServiceImpl implements Service {
     private final Logger logger = LoggerFactory.getLogger(ServiceImpl.class);
 
     @Override
-    public CommonResponse statusRequest(SaveStatusRequest statusRequest) throws Exception {
+    public String statusRequest(SaveStatusRequest statusRequest) throws Exception {
 
         StatusManage statusManage = new StatusManage();
         CommonResponse commonResponse = new CommonResponse();
 
-        statusRequest.validate();
         statusManage.setApplicationNo(statusRequest.getApplicationNo());
         statusManage.setCancelCause(statusRequest.getCancelCause());
         statusManage.setLoanNo(statusRequest.getLoanNo());
@@ -48,10 +47,8 @@ public class ServiceImpl implements Service {
 
         statusRepository.save(statusManage);
         logger.info("Cancellation status upload");
-        commonResponse.setCode("0000");
-        commonResponse.setMsg("Cancel status save successfully");
 
-        return commonResponse;
+        return "Cancel status save successfully";
     }
 
     @Scheduled(cron = "0 0 10 * * ?")

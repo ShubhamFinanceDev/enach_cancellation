@@ -15,9 +15,14 @@ public class SaveStatusRequest {
                 Objects.isNull(applicationNo) ||
                 Objects.isNull(cancelCause);
     }
+    public boolean blankFields() {
+        return loanNo.isBlank() ||
+               applicationNo.isBlank() ||
+                cancelCause.isBlank();
+    }
 
     public void validate() {
-        if (hasNullFields()) {
+        if (hasNullFields() || blankFields()) {
             throw new IllegalArgumentException("One or more fields are null or empty.");
         }
     }
