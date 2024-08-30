@@ -21,7 +21,7 @@ public class SendEmailUtility {
     @Value("${spring.mail.username}")
     private String sender;
 
-    @Value("spring.mail.reciver")
+    @Value("${spring.mail.reciver}")
     private String reciver;
 
     private final Logger logger = LoggerFactory.getLogger(SendEmailUtility.class);
