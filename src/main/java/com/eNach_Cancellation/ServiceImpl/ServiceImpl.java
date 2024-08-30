@@ -85,15 +85,14 @@ public class ServiceImpl implements Service {
                 row.createCell(0).setCellValue(list.getApplicationNo());
                 row.createCell(1).setCellValue(list.getLoanNo());
                 row.createCell(2).setCellValue(list.getCancelCause());
-                row.createCell(3).setCellValue(list.getCancellationTime());
+                row.createCell(3).setCellValue(list.getCancellationTime().toString());
             }
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             workbook.write(outputStream);
             workbook.close();
             byte[] excelData = outputStream.toByteArray();
 
-            String email = "saurabhsingh2757@gmail.com";
-            sendEmailUtility.sendEmailWithAttachment(email, excelData);
+            sendEmailUtility.sendEmailWithAttachment(excelData);
 
         } catch (Exception e) {
             System.out.println("Error while executing report query :" + e.getMessage());

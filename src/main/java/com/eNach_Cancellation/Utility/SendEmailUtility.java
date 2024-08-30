@@ -21,10 +21,13 @@ public class SendEmailUtility {
     @Value("${spring.mail.username}")
     private String sender;
 
+    @Value("spring.mail.reciver")
+    private String reciver;
+
     private final Logger logger = LoggerFactory.getLogger(SendEmailUtility.class);
 
 
-    public void sendEmailWithAttachment(String reciver, byte[] excelData) throws MessagingException {
+    public void sendEmailWithAttachment(byte[] excelData) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
